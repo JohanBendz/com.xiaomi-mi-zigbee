@@ -12,11 +12,12 @@
 		"measure_humidity",
 		"alarm_battery"
 	],
+	"energy": {
+		"batteries": [ "CR2032" ]
+	},
 	"zigbee": {
 		"manufacturerName": "LUMI",
-		"productId": [
-			"lumi.weather"
-		],
+		"productId": "lumi.weather",
 		"deviceId": [
 			770,
 			24321

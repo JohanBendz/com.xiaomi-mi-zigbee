@@ -1,5 +1,6 @@
 'use strict';
 
+const util = require('./../../lib/util');
 const ZigBeeDevice = require('homey-meshdriver').ZigBeeDevice;
 
 class AqaraHumanBodySensor extends ZigBeeDevice {
@@ -9,6 +10,9 @@ class AqaraHumanBodySensor extends ZigBeeDevice {
 
 		// print the node's info to the console
 		// this.printNode();
+
+		//Link util parseData method to this devices instance
+		this.parseData = util.parseData.bind(this)
 
 		// Register attribute listener for occupancy
 		this.registerAttrReportListener('msOccupancySensing', 'occupancy', 1, 60, null,
@@ -39,11 +43,12 @@ class AqaraHumanBodySensor extends ZigBeeDevice {
 		this.log('alarm_motion', value === 1);
 
 		// Set and clear motion timeout
+		let alarm_motion_reset_window = this.getSetting('hacked_alarm_motion_reset_window') ? 5 : (this.getSetting('alarm_motion_reset_window') || 300);
 		clearTimeout(this.motionTimeout);
 		this.motionTimeout = setTimeout(() => {
 			this.log('manual alarm_motion reset');
 			this.setCapabilityValue('alarm_motion', false);
-		}, (this.getSetting('alarm_motion_reset_window') || 300) * 1000);
+		}, alarm_motion_reset_window * 1000);
 
 		// Update capability value
 		this.setCapabilityValue('alarm_motion', value === 1);
@@ -57,7 +62,7 @@ class AqaraHumanBodySensor extends ZigBeeDevice {
 	onLifelineReport(value) {
 		this._debug('lifeline report', new Buffer(value, 'ascii'));
 
-		const parsedData = parseData(new Buffer(value, 'ascii'));
+		const parsedData = this.parseData(new Buffer(value, 'ascii'));
 		this._debug('parsedData', parsedData);
 
 		// battery reportParser (ID 1)
@@ -84,22 +89,6 @@ class AqaraHumanBodySensor extends ZigBeeDevice {
 			this.setCapabilityValue('alarm_motion', parsedContact);
 		}
 		*/
-
-		function parseData(rawData) {
-			const data = {};
-			let index = 0;
-			while (index < rawData.length - 2) {
-				const type = rawData.readUInt8(index + 1);
-				const byteLength = (type & 0x7) + 1;
-				const isSigned = Boolean((type >> 3) & 1);
-				// extract the relevant objects (1) Battery, (100) Motion alarm
-				if ([1].includes(rawData.readUInt8(index))) {
-					data[rawData.readUInt8(index)] = rawData[isSigned ? 'readIntLE' : 'readUIntLE'](index + 2, byteLength);
-				}
-				index += byteLength + 2;
-			}
-			return data;
-		}
 	}
 }
 

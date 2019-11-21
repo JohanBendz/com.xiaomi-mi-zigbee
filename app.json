@@ -10,7 +10,7 @@
   "category": [
     "lights"
   ],
-  "version": "0.5.4",
+  "version": "0.6.2",
   "compatibility": ">=1.5.13",
   "athomForumDiscussionId": 4120,
   "homeyCommunityTopicId": 156,
@@ -22,10 +22,6 @@
   },
   "contributors": {
     "developers": [
-      {
-        "name": "Sebastian Spoerer",
-        "email": "sebastian@programmieramt.de"
-      },
       {
         "name": "Edwin Tan (Automate Asia)",
         "email": "Edwin.Tan@automate.asia"
@@ -41,6 +37,12 @@
       {
         "name": "Ted Tolboom",
         "email": "dTNL.Homey@gmail.com"
+      }
+    ],
+    "translators": [
+      {
+        "name": "🇩🇪 Sebastian Spoerer",
+        "email": "sebastian@programmieramt.de"
       }
     ]
   },
@@ -69,7 +71,16 @@
         "nl": "Gedetecteerde kantel beweging"
       },
       "getable": true,
-      "setable": false
+      "setable": false,
+      "insights": true,
+      "insightsTitleTrue": {
+        "en": "Tilt alarm turned on",
+        "nl": "Kantel alarm ging af"
+      },
+      "insightsTitleFalse": {
+        "en": "Tilt alarm turned off",
+        "nl": "Kantel alarm ging uit"
+      }
     },
     "alarm_vibration": {
       "type": "boolean",
@@ -84,7 +95,16 @@
         "nl": "Gedetecteerde trilling"
       },
       "getable": true,
-      "setable": false
+      "setable": false,
+      "insights": true,
+      "insightsTitleTrue": {
+        "en": "Vibration alarm turned on",
+        "nl": "Trillings alarm ging af"
+      },
+      "insightsTitleFalse": {
+        "en": "Vibration alarm turned off",
+        "nl": "Trillings alarm ging uit"
+      }
     },
     "alarm_drop": {
       "type": "boolean",
@@ -99,7 +119,16 @@
         "nl": "Gedetecteerde val beweging"
       },
       "getable": true,
-      "setable": false
+      "setable": false,
+      "insights": true,
+      "insightsTitleTrue": {
+        "en": "Drop alarm turned on",
+        "nl": "Val alarm ging af"
+      },
+      "insightsTitleFalse": {
+        "en": "Drop alarm turned off",
+        "nl": "Val alarm ging uit"
+      }
     },
     "measure_tilt": {
       "type": "number",
@@ -111,6 +140,7 @@
       },
       "getable": true,
       "setable": false,
+      "insights": true,
       "units": {
         "en": "°"
       },
@@ -126,6 +156,7 @@
       },
       "getable": true,
       "setable": false,
+      "insights": true,
       "decimals": 2
     },
     "cube_measure_rotation": {
@@ -138,6 +169,7 @@
       },
       "getable": true,
       "setable": false,
+      "insights": true,
       "units": {
         "en": "°"
       },
@@ -293,7 +325,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=ctrl_neutral2|ctrl_ln2.aq1"
+            "filter": "driver_id=ctrl_neutral2|ctrl_ln2.aq1|relay.c2acn01"
           }
         ]
       },
@@ -308,7 +340,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=ctrl_neutral2|ctrl_ln2.aq1"
+            "filter": "driver_id=ctrl_neutral2|ctrl_ln2.aq1|relay.c2acn01"
           }
         ]
       },
@@ -1295,7 +1327,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=ctrl_neutral2|ctrl_ln2.aq1"
+            "filter": "driver_id=ctrl_neutral2|ctrl_ln2.aq1|relay.c2acn01"
           }
         ]
       }
@@ -1312,7 +1344,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=ctrl_neutral2|ctrl_ln2.aq1"
+            "filter": "driver_id=ctrl_neutral2|ctrl_ln2.aq1|relay.c2acn01"
           }
         ]
       },
@@ -1327,7 +1359,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=ctrl_neutral2|ctrl_ln2.aq1"
+            "filter": "driver_id=ctrl_neutral2|ctrl_ln2.aq1|relay.c2acn01"
           }
         ]
       }
@@ -1348,11 +1380,14 @@
         "measure_voltage",
         "meter_power"
       ],
+      "capabilitiesOptions": {
+        "measure_power": {
+          "approximated": true
+        }
+      },
       "zigbee": {
         "manufacturerName": "LUMI",
-        "productId": [
-          "lumi.ctrl_86plug.aq1"
-        ],
+        "productId": "lumi.ctrl_86plug.aq1",
         "deviceId": 81,
         "profileId": 260,
         "learnmode": {
@@ -1384,6 +1419,11 @@
         "meter_power",
         "measure_voltage"
       ],
+      "capabilitiesOptions": {
+        "measure_power": {
+          "approximated": true
+        }
+      },
       "mobile": {
         "components": [
           {
@@ -1411,12 +1451,8 @@
       },
       "zigbee": {
         "manufacturerName": "LUMI",
-        "productId": [
-          "lumi.ctrl_ln1.aq1"
-        ],
-        "deviceId": [
-          81
-        ],
+        "productId": "lumi.ctrl_ln1.aq1",
+        "deviceId": 81,
         "profileId": 260,
         "learnmode": {
           "image": "/drivers/ctrl_ln1.aq1/assets/learn.svg",
@@ -1459,6 +1495,9 @@
             "en": "Switch 2"
           },
           "greyout": false
+        },
+        "measure_power": {
+          "approximated": true
         }
       },
       "mobile": {
@@ -1497,12 +1536,8 @@
       },
       "zigbee": {
         "manufacturerName": "LUMI",
-        "productId": [
-          "lumi.ctrl_ln2.aq1"
-        ],
-        "deviceId": [
-          81
-        ],
+        "productId": "lumi.ctrl_ln2.aq1",
+        "deviceId": 81,
         "profileId": 260,
         "learnmode": {
           "image": "/drivers/ctrl_ln2.aq1/assets/learn.svg",
@@ -1531,12 +1566,8 @@
       ],
       "zigbee": {
         "manufacturerName": "LUMI",
-        "productId": [
-          "lumi.ctrl_neutral1"
-        ],
-        "deviceId": [
-          6
-        ],
+        "productId": "lumi.ctrl_neutral1",
+        "deviceId": 6,
         "profileId": 260,
         "learnmode": {
           "image": "/drivers/ctrl_neutral1/assets/learn.svg",
@@ -1606,12 +1637,8 @@
       },
       "zigbee": {
         "manufacturerName": "LUMI",
-        "productId": [
-          "lumi.ctrl_neutral2"
-        ],
-        "deviceId": [
-          6
-        ],
+        "productId": "lumi.ctrl_neutral2",
+        "deviceId": 6,
         "profileId": 260,
         "learnmode": {
           "image": "/drivers/ctrl_neutral2/assets/learn.svg",
@@ -1642,6 +1669,11 @@
         "cube_measure_rotation",
         "alarm_battery"
       ],
+      "energy": {
+        "batteries": [
+          "CR2450"
+        ]
+      },
       "mobile": {
         "components": [
           {
@@ -1675,9 +1707,7 @@
       },
       "zigbee": {
         "manufacturerName": "LUMI",
-        "productId": [
-          "lumi.sensor_cube"
-        ],
+        "productId": "lumi.sensor_cube",
         "deviceId": 24321,
         "profileId": 260,
         "learnmode": {
@@ -1823,6 +1853,12 @@
         "dim",
         "light_temperature"
       ],
+      "energy": {
+        "approximation": {
+          "usageOn": 9,
+          "usageOff": 0
+        }
+      },
       "capabilitiesOptions": {
         "dim": {
           "opts": {
@@ -1835,9 +1871,7 @@
       },
       "zigbee": {
         "manufacturerName": "LUMI",
-        "productId": [
-          "lumi.light.aqcn02"
-        ],
+        "productId": "lumi.light.aqcn02",
         "deviceId": 258,
         "profileId": 260,
         "learnmode": {
@@ -1888,11 +1922,14 @@
         "measure_voltage",
         "meter_power"
       ],
+      "capabilitiesOptions": {
+        "measure_power": {
+          "approximated": true
+        }
+      },
       "zigbee": {
         "manufacturerName": "LUMI",
-        "productId": [
-          "lumi.plug"
-        ],
+        "productId": "lumi.plug",
         "deviceId": 81,
         "profileId": 260,
         "learnmode": {
@@ -1911,6 +1948,89 @@
       "settings": []
     },
     {
+      "id": "relay.c2acn01",
+      "name": {
+        "en": "Aqara Double Relay",
+        "nl": "Aqara Double Relay",
+        "de": "Aqara Double Relay"
+      },
+      "class": "socket",
+      "capabilities": [
+        "onoff",
+        "onoff.1",
+        "measure_power"
+      ],
+      "capabilitiesOptions": {
+        "onoff": {
+          "title": {
+            "en": "Switch 1"
+          },
+          "greyout": false
+        },
+        "onoff.1": {
+          "title": {
+            "en": "Switch 2"
+          },
+          "greyout": false
+        },
+        "measure_power": {
+          "approximated": true
+        }
+      },
+      "mobile": {
+        "components": [
+          {
+            "id": "icon",
+            "capabilities": []
+          },
+          {
+            "id": "sensor",
+            "capabilities": [
+              "measure_power",
+              "meter_power",
+              "measure_voltage"
+            ]
+          },
+          {
+            "id": "toggle",
+            "capabilities": [
+              "onoff"
+            ],
+            "options": {
+              "showTitle": true
+            }
+          },
+          {
+            "id": "toggle",
+            "capabilities": [
+              "onoff.1"
+            ],
+            "options": {
+              "showTitle": true
+            }
+          }
+        ]
+      },
+      "zigbee": {
+        "manufacturerName": "LUMI",
+        "productId": "lumi.relay.c2acn01",
+        "deviceId": 257,
+        "profileId": 260,
+        "learnmode": {
+          "image": "/drivers/relay.c2acn01/assets/learn.svg",
+          "instruction": {
+            "en": "Press and hold the reset button for more than 5 seconds until the blue light flashes three times after release",
+            "nl": "Press and hold the reset button for more than 5 seconds until the blue light flashes three times after release",
+            "de": "Drücke einen beliebigen Knopf länger als 5 Sekunden. Nach dem los lassen blinkt das blaue Licht 3 Mal."
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/relay.c2acn01/assets/images/large.png",
+        "small": "/drivers/relay.c2acn01/assets/images/small.png"
+      }
+    },
+    {
       "id": "remote.b186acn01",
       "name": {
         "en": "Aqara Wireless Switch Single (2018)",
@@ -1919,11 +2039,14 @@
       },
       "class": "sensor",
       "capabilities": [],
+      "energy": {
+        "batteries": [
+          "CR2032"
+        ]
+      },
       "zigbee": {
         "manufacturerName": "LUMI",
-        "productId": [
-          "lumi.remote.b186acn01"
-        ],
+        "productId": "lumi.remote.b186acn01",
         "deviceId": 24321,
         "profileId": 260,
         "learnmode": {
@@ -1950,11 +2073,14 @@
       },
       "class": "sensor",
       "capabilities": [],
+      "energy": {
+        "batteries": [
+          "CR2032"
+        ]
+      },
       "zigbee": {
         "manufacturerName": "LUMI",
-        "productId": [
-          "lumi.remote.b286acn01"
-        ],
+        "productId": "lumi.remote.b286acn01",
         "deviceId": 24321,
         "profileId": 260,
         "learnmode": {
@@ -1984,11 +2110,14 @@
         "alarm_battery",
         "measure_battery"
       ],
+      "energy": {
+        "batteries": [
+          "CR2032"
+        ]
+      },
       "zigbee": {
         "manufacturerName": "LUMI",
-        "productId": [
-          "lumi.remote.b1acn01"
-        ],
+        "productId": "lumi.remote.b1acn01",
         "deviceId": 259,
         "profileId": 260,
         "learnmode": {
@@ -2038,11 +2167,14 @@
         "measure_battery",
         "alarm_battery"
       ],
+      "energy": {
+        "batteries": [
+          "CR2032"
+        ]
+      },
       "zigbee": {
         "manufacturerName": "LUMI",
-        "productId": [
-          "lumi.sens"
-        ],
+        "productId": "lumi.sens",
         "deviceId": [
           24321
         ],
@@ -2151,11 +2283,14 @@
       },
       "class": "sensor",
       "capabilities": [],
+      "energy": {
+        "batteries": [
+          "CR2032"
+        ]
+      },
       "zigbee": {
         "manufacturerName": "LUMI",
-        "productId": [
-          "lumi.sensor_86sw1lu"
-        ],
+        "productId": "lumi.sensor_86sw1lu",
         "deviceId": 24321,
         "profileId": 260,
         "learnmode": {
@@ -2182,11 +2317,14 @@
       },
       "class": "sensor",
       "capabilities": [],
+      "energy": {
+        "batteries": [
+          "CR2032"
+        ]
+      },
       "zigbee": {
         "manufacturerName": "LUMI",
-        "productId": [
-          "lumi.sensor_86sw2Un"
-        ],
+        "productId": "lumi.sensor_86sw2Un",
         "deviceId": 24321,
         "profileId": 260,
         "learnmode": {
@@ -2215,11 +2353,14 @@
         "alarm_battery",
         "measure_battery"
       ],
+      "energy": {
+        "batteries": [
+          "CR1632"
+        ]
+      },
       "zigbee": {
         "manufacturerName": "LUMI",
-        "productId": [
-          "lumi.sensor_magnet.aq2"
-        ],
+        "productId": "lumi.sensor_magnet.aq2",
         "deviceId": 24321,
         "profileId": 260,
         "learnmode": {
@@ -2268,11 +2409,14 @@
         "measure_battery",
         "alarm_battery"
       ],
+      "energy": {
+        "batteries": [
+          "CR1632"
+        ]
+      },
       "zigbee": {
         "manufacturerName": "LUMI",
-        "productId": [
-          "lumi.sensor_magnet"
-        ],
+        "productId": "lumi.sensor_magnet",
         "deviceId": 260,
         "profileId": 260,
         "learnmode": {
@@ -2302,6 +2446,11 @@
         "alarm_battery",
         "measure_battery"
       ],
+      "energy": {
+        "batteries": [
+          "CR2450"
+        ]
+      },
       "zigbee": {
         "manufacturerName": "LUMI",
         "productId": "lumi.sensor_motion.aq2",
@@ -2357,6 +2506,28 @@
             "min": 1,
             "max": 90
           }
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Expert settings",
+            "nl": "Expert instellingen"
+          },
+          "collapsed": true,
+          "children": [
+            {
+              "id": "hacked_alarm_motion_reset_window",
+              "type": "checkbox",
+              "value": false,
+              "label": {
+                "en": "Hacked sensor"
+              },
+              "hint": {
+                "en": "By soldering two contact points on the PCB it's possible to reduce the motion blind time to 5 seconds instead of the minimum 60 seconds. Enabling this setting will allow you to override the minimum of 60 seconds for cancelling the alarm and will set it to 5 seconds.",
+                "nl": "Door twee contactpunten op de printplaat te solderen is het mogelijk om de blindtijd van de sensor terug te brengen naar 5 seconden. Inschakelen van deze instelling maakt het mogelijk om de instelling voor het annuleren van de bewegingsmelder te overschrijven tot 5 seconden."
+              }
+            }
+          ]
         }
       ]
     },
@@ -2373,6 +2544,11 @@
         "alarm_battery",
         "measure_battery"
       ],
+      "energy": {
+        "batteries": [
+          "CR2450"
+        ]
+      },
       "zigbee": {
         "manufacturerName": "LUMI",
         "productId": "lumi.sensor_motion",
@@ -2408,6 +2584,28 @@
             "min": 60,
             "max": 86400
           }
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Expert settings",
+            "nl": "Expert instellingen"
+          },
+          "collapsed": true,
+          "children": [
+            {
+              "id": "hacked_alarm_motion_reset_window",
+              "type": "checkbox",
+              "value": false,
+              "label": {
+                "en": "Hacked sensor"
+              },
+              "hint": {
+                "en": "By soldering two contact points on the PCB it's possible to reduce the motion blind time to 5 seconds instead of the minimum 60 seconds. Enabling this setting will allow you to override the minimum of 60 seconds for cancelling the alarm and will set it to 5 seconds.",
+                "nl": "Door twee contactpunten op de printplaat te solderen is het mogelijk om de blindtijd van de sensor terug te brengen naar 5 seconden. Inschakelen van deze instelling maakt het mogelijk om de instelling voor het annuleren van de bewegingsmelder te overschrijven tot 5 seconden."
+              }
+            }
+          ]
         }
       ]
     },
@@ -2422,11 +2620,14 @@
         "alarm_battery",
         "measure_battery"
       ],
+      "energy": {
+        "batteries": [
+          "CR2032"
+        ]
+      },
       "zigbee": {
         "manufacturerName": "LUMI",
-        "productId": [
-          "lumi.sensor_switch.aq2"
-        ],
+        "productId": "lumi.sensor_switch.aq2",
         "deviceId": 24321,
         "profileId": 260,
         "learnmode": {
@@ -2473,6 +2674,11 @@
         "alarm_battery",
         "measure_battery"
       ],
+      "energy": {
+        "batteries": [
+          "CR2032"
+        ]
+      },
       "zigbee": {
         "manufacturerName": "LUMI",
         "productId": [
@@ -2522,11 +2728,14 @@
       },
       "class": "sensor",
       "capabilities": [],
+      "energy": {
+        "batteries": [
+          "CR2032"
+        ]
+      },
       "zigbee": {
         "manufacturerName": "LUMI",
-        "productId": [
-          "lumi.sensor_switch"
-        ],
+        "productId": "lumi.sensor_switch",
         "deviceId": 260,
         "profileId": 260,
         "learnmode": {
@@ -2579,6 +2788,11 @@
         "alarm_battery",
         "measure_battery"
       ],
+      "energy": {
+        "batteries": [
+          "CR2032"
+        ]
+      },
       "capabilitiesOptions": {
         "measure_tilt.relative": {
           "title": {
@@ -2624,12 +2838,8 @@
       },
       "zigbee": {
         "manufacturerName": "LUMI",
-        "productId": [
-          "lumi.vibration.aq1"
-        ],
-        "deviceId": [
-          10
-        ],
+        "productId": "lumi.vibration.aq1",
+        "deviceId": 10,
         "profileId": 260,
         "learnmode": {
           "image": "/drivers/vibration.aq1/assets/learn_vibration.svg",
@@ -2782,11 +2992,14 @@
         "measure_humidity",
         "alarm_battery"
       ],
+      "energy": {
+        "batteries": [
+          "CR2032"
+        ]
+      },
       "zigbee": {
         "manufacturerName": "LUMI",
-        "productId": [
-          "lumi.weather"
-        ],
+        "productId": "lumi.weather",
         "deviceId": [
           770,
           24321

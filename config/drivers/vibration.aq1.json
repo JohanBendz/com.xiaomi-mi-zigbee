@@ -16,6 +16,9 @@
 		"alarm_battery",
 		"measure_battery"
 	],
+	"energy": {
+		"batteries": [ "CR2032" ]
+	},
 	"capabilitiesOptions": {
 		"measure_tilt.relative": {
 			"title": {
@@ -60,12 +63,8 @@
 	},
 	"zigbee": {
 		"manufacturerName": "LUMI",
-		"productId": [
-			"lumi.vibration.aq1"
-		],
-		"deviceId": [
-			10
-		],
+		"productId": "lumi.vibration.aq1",
+		"deviceId": 10,
 		"profileId": 260,
 		"learnmode": {
 			"image": "/drivers/vibration.aq1/assets/learn_vibration.svg",

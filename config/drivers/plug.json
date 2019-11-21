@@ -13,9 +13,14 @@
 		"measure_voltage",
 		"meter_power"
 	],
+	"capabilitiesOptions": {
+		"measure_power": {
+			"approximated": true
+		}
+	},
 	"zigbee": {
 		"manufacturerName": "LUMI",
-		"productId": ["lumi.plug"],
+		"productId": "lumi.plug",
 		"deviceId": 81,
 		"profileId": 260,
 		"learnmode": {
